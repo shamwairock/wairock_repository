@@ -9,10 +9,76 @@ namespace Diamond_Pattern
     {
         static void Main(string[] args)
         {
-            int width= 11;
+            PrintPattern1();
+            LineFeed();
+            PrintPattern2();
+            
+
+
+            Console.ReadKey();
+        }
+
+        private static void PrintPattern2()
+        {
+            int width = 11;
             int height = width;
 
-            int median = width/2;
+            int median = width / 2;
+
+            int u_start = median;
+            int u_end = median;
+
+            int l_start = 1;
+            int l_end = width - 2;
+
+            for (int i = 0; i < height; i++)
+            {
+                if (i < median + 1)
+                {
+                    for (int j = 0; j < width; j++)
+                    {
+                        if (j == u_start || j == u_end)
+                        {
+                            Print("*");
+                        }
+                        else
+                        {
+                            Print();
+                        }
+                    }
+
+                    u_start = u_start - 1;
+                    u_end = u_end + 1;
+                }
+                else
+                {
+                    for (int j = 0; j < width; j++)
+                    {
+                        if (j == l_start || j == l_end)
+                        {
+                            Print("*");
+                        }
+                        else
+                        {
+                            Print();
+                        }
+                    }
+
+                    l_start = l_start + 1;
+                    l_end = l_end - 1;
+
+                }
+
+                LineFeed();
+            }
+        }
+
+        private static void PrintPattern1()
+        {
+            int width = 11;
+            int height = width;
+
+            int median = width / 2;
 
             int u_start = median;
             int u_end = median;
@@ -60,9 +126,6 @@ namespace Diamond_Pattern
 
                 LineFeed();
             }
-
-
-            Console.ReadKey();
         }
 
 
