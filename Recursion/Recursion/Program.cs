@@ -39,6 +39,25 @@ namespace Recursion
             {
                 Console.Write(s + " ");
             }
+            Console.WriteLine();
+
+            var dictionary = new Dictionary<uint, string>
+            {
+                {8, "eight"},
+                {7, "seven"},
+                {6, "six"},
+                {5, "five"},
+                {1, "one"},
+                {2, "two"},
+                {3, "three"},
+                {4, "four"}
+            };
+
+            Console.Write("Binary search for key 8:" + Recursion.BinarySearch(8, dictionary));
+            Console.WriteLine();
+            Console.Write("Binary search for key 4:" + Recursion.BinarySearch(4, dictionary));
+            Console.WriteLine();
+            Console.Write("Binary search for key 99:" + Recursion.BinarySearch(99, dictionary));
 
             Console.ReadKey();
         }

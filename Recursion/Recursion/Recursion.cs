@@ -112,6 +112,20 @@ namespace Recursion
                     return GetFibonacciSeries(input, series);
                 }
             }
-        } 
+        }
+
+        public static string BinarySearch(uint key, Dictionary<uint, string> dictionary)
+        {
+            dictionary.OrderBy(x => x.Key);
+
+            if (dictionary.Count == 1)
+            {
+                return dictionary.ContainsKey(key) ? dictionary[key] : "Key not found";
+            }
+
+            var firstChunk = dictionary.Take(dictionary.Count/2).ToDictionary(x => x.Key, x => x.Value);
+            var secondChunk = dictionary.Skip(firstChunk.Count).ToDictionary(x => x.Key, x => x.Value);
+            return firstChunk.ContainsKey(key) ? firstChunk[key] : BinarySearch(key, secondChunk);
+        }
     }
 }
