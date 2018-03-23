@@ -76,5 +76,42 @@ namespace Recursion
 
             return input;
         }
+
+        public static uint[] GetFibonacciSeries(uint input, uint[] series = null)
+        {
+            uint f1;
+            uint f2;
+           
+            if (series == null)
+            {
+                series = new uint[3];
+
+                f1 = 1;
+                f2 = 1;
+
+                series[0] = f1;
+                series[1] = f2;
+                series[2] = f1 + f2;
+                
+                return GetFibonacciSeries(input, series);
+            }
+            else
+            {
+                if (series.Length == input)
+                {
+                    return series;
+                }
+                else
+                {
+                    f1 = series[series.Length - 1];
+                    f2 = series[series.Length - 2];
+
+                    Array.Resize(ref series, series.Length + 1);
+                    series[series.Length - 1] = f1 + f2;
+
+                    return GetFibonacciSeries(input, series);
+                }
+            }
+        } 
     }
 }

@@ -32,6 +32,13 @@ namespace Recursion
             {
                 Console.Write(s + " ");
             }
+            Console.WriteLine();
+
+            Console.Write("Fibonacci result: ");
+            foreach (var s in Recursion.GetFibonacciSeries(8))
+            {
+                Console.Write(s + " ");
+            }
 
             Console.ReadKey();
         }
