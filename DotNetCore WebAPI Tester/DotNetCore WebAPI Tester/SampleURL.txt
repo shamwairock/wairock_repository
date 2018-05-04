@@ -1,0 +1,9 @@
+﻿The products API will expose following methods.
+
+Action	HTTP method	Relative URI
+Get a list of all products	GET	/api/products
+Get a product by ID	GET	/api/products/id
+Get a product by category	GET	/api/products?category=category
+Create a new product	POST	/api/products
+Update a product	PUT	/api/products/id
+Delete a product	DELETE	/api/products/id
