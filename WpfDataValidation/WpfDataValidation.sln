@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDataValidation", "WpfDataValidation\WpfDataValidation.csproj", "{731167A3-2515-4C9B-904D-F1A9725B9E9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{731167A3-2515-4C9B-904D-F1A9725B9E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731167A3-2515-4C9B-904D-F1A9725B9E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731167A3-2515-4C9B-904D-F1A9725B9E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731167A3-2515-4C9B-904D-F1A9725B9E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67CFDB5A-8BF5-43A2-A62B-27317D87E28A}
+	EndGlobalSection
+EndGlobal
