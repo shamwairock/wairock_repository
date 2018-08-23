@@ -8,7 +8,7 @@
         
         mc:Ignorable="d"
         Title="MainWindow" Height="Auto" Width="Auto">
-    <Grid Width="Auto" Height="Auto" DataContext="{Binding MenuTree}">
+    <Grid Width="Auto" Height="Auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -19,14 +19,14 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="5"></RowDefinition>
         </Grid.RowDefinitions>
-        <TreeView ItemsSource="{Binding MenuTrees}" Grid.Row="1" Grid.Column="1" Background="Aquamarine" Name="treeView">
+        <TreeView ItemsSource="{Binding Families}" Grid.Row="1" Grid.Column="1" Background="Aquamarine" Name="treeView">
             <TreeView.Resources>
-                <HierarchicalDataTemplate ItemsSource="{Binding MenuTrees}" DataType="{x:Type local:IMenuTree}">
-                    <TreeViewItem Header="{Binding Label}" Name="treeViewItem" Background="Beige"/>
+                <HierarchicalDataTemplate ItemsSource="{Binding Members}" DataType="{x:Type local:Family}">
+                    <TreeViewItem Header="{Binding Name}" Name="treeViewItem" Background="Beige"/>
                     <!--<TextBlock Text="{Binding Path=Label}" Background="Beige"/>-->
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type local:IParameter}">
-                    <TextBox Text="{Binding Label}" />
+                <DataTemplate DataType="{x:Type local:FamilyMember}">
+                    <TextBox Text="{Binding Name}" />
                 </DataTemplate>
             </TreeView.Resources>
             <i:Interaction.Triggers>

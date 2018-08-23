@@ -8,7 +8,9 @@ namespace BinaryTree
 {
     public interface INode<T>
     {
-        T Data {get;set;}
+        T Value {get;set;}
+
+        INode<T> ParentNode { get; set; }
 
         INode<T> LeftNode { get; set; }
 
@@ -19,9 +21,9 @@ namespace BinaryTree
         /// If node is duplicated, do not insert.
         /// </summary>
         /// <param name="node"></param>
-        void Insert(INode<T> node);
+        void Insert(T value, INode<int> parentNode);
 
-        void Remove(INode<T> node);
+        void Remove(T value);
 
         void Traversal();
 

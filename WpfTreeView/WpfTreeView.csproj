@@ -63,8 +63,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="IMenuTree.cs" />
-    <Compile Include="IParameter.cs" />
+    <Compile Include="Family.cs" />
+    <Compile Include="FamilyMember.cs" />
+    <Compile Include="INode.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -72,8 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowVm.cs" />
-    <Compile Include="MenuTree.cs" />
-    <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
