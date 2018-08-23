@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "C:\\Users\\40204776\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintPath": "/path/to/virtualenv/bin/pylint",
+    "python.linting.pylintArgs": [
+                                    "--load-plugins",
+                                    "pylint_django"
+                                 ],
+    "python.linting.pylintEnabled": true
+}
