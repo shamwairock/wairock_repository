@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfTreeView2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:WpfTreeView2"
+        xmlns:interface="clr-namespace:WpfTreeView2.Interfaces"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:models="clr-namespace:WpfTreeView2.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Width="Auto" Height="Auto" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <TreeView ItemsSource="{Binding UiElements}"  Background="Aquamarine" Name="treeView">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate ItemsSource="{Binding MenuItems}" DataType="{x:Type models:Menu}">
+                        <TreeViewItem Header="{Binding Label}" Name="treeViewItem" Background="Beige"/>
+                        <!--<TextBlock Text="{Binding Path=Label}" Background="Beige"/>-->
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type models:Variable}">
+                        <TextBox Text="{Binding Label}" />
+                    </DataTemplate>
+                </TreeView.Resources>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedItemChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" CommandParameter="{Binding ElementName=treeView, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TreeView>
+        </Grid>
+
+    </Grid>
+</Window>
