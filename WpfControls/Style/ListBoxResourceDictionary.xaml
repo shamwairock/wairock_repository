@@ -13,9 +13,13 @@
     <DataTemplate x:Key="enumViewDataTemplate">
         <local:EnumControlView></local:EnumControlView>
     </DataTemplate>
+    <DataTemplate x:Key="bitEnumViewDataTemplate">
+        <local:BitEnumControlView></local:BitEnumControlView>
+    </DataTemplate>
     <local:YDataTemplateSelector x:Key="YDataTemplateSelectorDictionary" 
-                                         DatePickerViewDataTemplate="{StaticResource datePickerViewDataTemplate}"
-                                         StringViewDataTemplate="{StaticResource stringViewDataTemplate}"
-                                         GroupBoxViewDataTemplate="{StaticResource groupBoxViewDataTemplate}"
-                                 EnumViewDataTemplate="{StaticResource enumViewDataTemplate}"/>
+                                DatePickerViewDataTemplate="{StaticResource datePickerViewDataTemplate}"
+                                StringViewDataTemplate="{StaticResource stringViewDataTemplate}"
+                                GroupBoxViewDataTemplate="{StaticResource groupBoxViewDataTemplate}"
+                        EnumViewDataTemplate="{StaticResource enumViewDataTemplate}"
+                        BitEnumViewDataTemplate="{StaticResource bitEnumViewDataTemplate}"/>
 </ResourceDictionary>

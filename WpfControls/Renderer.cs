@@ -29,7 +29,7 @@ namespace WpfControls
                 tabControlViewModel.TabItemViewModels = new ObservableCollection<TabItemViewModel>();
                 var tabItemViewModel = new TabItemViewModel();
                 tabItemViewModel.Label = "Tab Item 1";
-                tabItemViewModel.ListViewItemModels = new ObservableCollection<ListViewItemModel>();
+                tabItemViewModel.ListViewItemModels = new ObservableCollection<ControlModel>();
                 var datePickerVm = new DatePickerControlViewModel();
                 datePickerVm.Label = "I am datePicker";
                 
@@ -37,25 +37,29 @@ namespace WpfControls
                 stringVm.Label = "I am String";
                 stringVm.Value = "default";
 
-                var comboBoxVm = new EnumControlViewModel<IRelation>();
+                var comboBoxVm = new EnumControlViewModel();
                 comboBoxVm.Label = "I am a combobox";
-                comboBoxVm.Selections  = new ObservableCollection<IRelation>();
-                comboBoxVm.Selections.Add(new SiUnit() {Label = "kg/m3"});
-                comboBoxVm.Selections.Add(new SiUnit() { Label = "bar" });
-                comboBoxVm.Selections.Add(new SiUnit() { Label = "mmHg" });
+                comboBoxVm.Selections  = new ObservableCollection<IEnumeration>();
+                comboBoxVm.Selections.Add(new Enumeration() { Label = "kg/m3", Id = "1" });
+                comboBoxVm.Selections.Add(new Enumeration() { Label = "mmHg", Id = "2" });
                 comboBoxVm.SelectedItem = comboBoxVm.Selections.First();
 
                 var groupBox = new GroupBoxControlViewModel();
                 groupBox.Label = "I am just a groupbox";
-                groupBox.ListViewItemModels = new ObservableCollection<ListViewItemModel>();
+                groupBox.ListViewItemModels = new ObservableCollection<ControlModel>();
                 groupBox.ListViewItemModels.Add(datePickerVm);
                 groupBox.ListViewItemModels.Add(stringVm);
                 groupBox.ListViewItemModels.Add(comboBoxVm);
 
+                var bitEnumViewModel =  new BitEnumControlViewModel();
+                bitEnumViewModel.Label = "I am a bit enum";
+                bitEnumViewModel.StrCheckedItems = "Selected values";
+                
                 tabItemViewModel.ListViewItemModels.Add(datePickerVm);
                 tabItemViewModel.ListViewItemModels.Add(stringVm);
                 tabItemViewModel.ListViewItemModels.Add(comboBoxVm);
                 tabItemViewModel.ListViewItemModels.Add(groupBox);
+                tabItemViewModel.ListViewItemModels.Add(bitEnumViewModel);
 
                 tabControlViewModel.TabItemViewModels.Add(tabItemViewModel);
                 tabControlView.DataContext = tabControlViewModel;

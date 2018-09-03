@@ -5,7 +5,7 @@ using WpfControls.Annotations;
 
 namespace WpfControls
 {
-    public class GroupBoxControlViewModel : ListViewItemModel
+    public class GroupBoxControlViewModel : ControlModel
     {
         private string label;
         public string Label
@@ -18,6 +18,6 @@ namespace WpfControls
             }
         }
 
-        public ObservableCollection<ListViewItemModel> ListViewItemModels { get; set; }
+        public ObservableCollection<ControlModel> ListViewItemModels { get; set; }
     }
 }

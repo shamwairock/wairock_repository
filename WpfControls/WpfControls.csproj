@@ -34,8 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +59,8 @@
       <DependentUpon>BitEnumControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="BitEnumControlViewModel.cs" />
+    <Compile Include="BitEnumeration.cs" />
+    <Compile Include="Interfaces\IBitEnumeration.cs" />
     <Compile Include="EnumControlView.xaml.cs">
       <DependentUpon>EnumControlView.xaml</DependentUpon>
     </Compile>
@@ -65,12 +69,12 @@
       <DependentUpon>DatePickerControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatePickerControlViewModel.cs" />
-    <Compile Include="IRelation.cs" />
-    <Compile Include="ListViewItemModel.cs" />
-    <Compile Include="SiUnit.cs" />
-    <Compile Include="StackPanelView.xaml.cs">
-      <DependentUpon>StackPanelView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Interfaces\IEnumeration.cs" />
+    <Compile Include="ControlModel.cs" />
+    <Compile Include="Interfaces\ILabel.cs" />
+    <Compile Include="Interfaces\IVariable.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="GroupBoxControlView.xaml.cs">
       <DependentUpon>GroupBoxControlView.xaml</DependentUpon>
     </Compile>
@@ -103,11 +107,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListBoxResourceDictionary.xaml">
+    <Page Include="Style\BitEnumComboBoxControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StackPanelView.xaml">
+    <Page Include="Style\ListBoxResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,11 +131,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StyleDictionary.xaml">
+    <Page Include="StringControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StringControlView.xaml">
+    <Page Include="Style\OriginalBitEnumComboBoxControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

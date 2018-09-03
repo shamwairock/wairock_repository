@@ -2,8 +2,9 @@
 
 namespace WpfControls
 {
-    public class TabItemViewModel : BaseViewModel
+    public class TabItemViewModel : BaseViewModel, ILabel
     {
-        public ObservableCollection<ListViewItemModel> ListViewItemModels { get; set; }
+        public ObservableCollection<ControlModel> ListViewItemModels { get; set; }
+        public string Label { get; set; }
     }
 }

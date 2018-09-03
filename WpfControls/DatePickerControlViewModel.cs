@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WpfControls
 {
-    public class DatePickerControlViewModel : ListViewItemModel
+    public class DatePickerControlViewModel : ControlModel
     {
         private DateTime _selectedDate;
 

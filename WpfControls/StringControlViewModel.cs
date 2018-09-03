@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WpfControls
 {
-    public class StringControlViewModel : ListViewItemModel
+    public class StringControlViewModel : ControlModel
     {
         private string _value;
 

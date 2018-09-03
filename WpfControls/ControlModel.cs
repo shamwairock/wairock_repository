@@ -5,7 +5,8 @@ using System.Text;
 
 namespace WpfControls
 {
-    public class ListViewItemModel : BaseViewModel
+    public class ControlModel : BaseViewModel, ILabel
     {
+        public string Label { get; set; }
     }
 }

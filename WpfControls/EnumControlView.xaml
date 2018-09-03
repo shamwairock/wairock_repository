@@ -23,6 +23,7 @@
             <ComboBox Grid.Column="3" Grid.Row="1" 
                       ItemsSource="{Binding Selections}" 
                       DisplayMemberPath="Label"
+                      SelectedValuePath="Id"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             </ComboBox>
         </Grid>

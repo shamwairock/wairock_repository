@@ -1,4 +1,4 @@
-﻿<Application x:Class="WpfControls.App"
+﻿<Application x:Class="WpfControls.Apps"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfControls"
@@ -6,11 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="StyleDictionary.xaml" />
-                <ResourceDictionary Source="ListBoxResourceDictionary.xaml" />
+                <ResourceDictionary Source="Style/BitEnumComboBoxControlTemplate.xaml" />
+                <ResourceDictionary Source="Style/ListBoxResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-      
     </Application.Resources>
 </Application>
 

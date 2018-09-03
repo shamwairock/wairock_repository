@@ -2,11 +2,11 @@
 
 namespace WpfControls
 {
-    public class EnumControlViewModel<T> : ListViewItemModel
+    public class EnumControlViewModel : ControlModel
     {
-        private ObservableCollection<T> _selections;
+        private ObservableCollection<IEnumeration> _selections;
 
-        public ObservableCollection<T> Selections
+        public ObservableCollection<IEnumeration> Selections
         {
             get { return _selections; }
             set
@@ -16,9 +16,9 @@ namespace WpfControls
         }
 
 
-        private T _selectedItem;
+        private IEnumeration _selectedItem;
 
-        public T SelectedItem
+        public IEnumeration SelectedItem
         {
             get { return _selectedItem; }
             set
@@ -26,11 +26,6 @@ namespace WpfControls
                 _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
             }
-        }
-
-        public EnumControlViewModel<T> Clone()
-        {
-            return new EnumControlViewModel<T>();
         }
     }
 }

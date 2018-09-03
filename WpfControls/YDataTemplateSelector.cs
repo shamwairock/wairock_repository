@@ -9,6 +9,7 @@ namespace WpfControls
         public DataTemplate StringViewDataTemplate { get; set; }
         public DataTemplate GroupBoxViewDataTemplate { get; set; }
         public DataTemplate EnumViewDataTemplate { get; set; }
+        public DataTemplate BitEnumViewDataTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
@@ -44,11 +45,18 @@ namespace WpfControls
                 return GroupBoxViewDataTemplate;
             }
 
-            var comboBoxViewModel = item as EnumControlViewModel<IRelation>;
-            if (comboBoxViewModel != null)
+            var enumControlViewModel = item as EnumControlViewModel;
+            if (enumControlViewModel != null)
             {
                 EnumViewDataTemplate = frameworkElement.FindResource("enumViewDataTemplate") as DataTemplate;
                 return EnumViewDataTemplate;
+            }
+
+            var bitEnumControlViewModel = item as BitEnumControlViewModel;
+            if (bitEnumControlViewModel != null)
+            {
+                BitEnumViewDataTemplate = frameworkElement.FindResource("bitEnumViewDataTemplate") as DataTemplate;
+                return BitEnumViewDataTemplate;
             }
 
             return null;
