@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfControls
 {
-    public class DatePickerControlViewModel : ControlModel
+    public class DatePickerViewModel : UiModel
     {
         private DateTime _selectedDate;
 

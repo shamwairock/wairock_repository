@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfControls.EnumControlView"
+﻿<UserControl x:Class="WpfControls.EnumView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -24,7 +24,7 @@
                       ItemsSource="{Binding Selections}" 
                       DisplayMemberPath="Label"
                       SelectedValuePath="Id"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             </ComboBox>
         </Grid>
     </Grid>

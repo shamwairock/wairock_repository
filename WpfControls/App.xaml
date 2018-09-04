@@ -7,7 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/BitEnumComboBoxControlTemplate.xaml" />
-                <ResourceDictionary Source="Style/ListBoxResourceDictionary.xaml" />
+                <ResourceDictionary Source="Style/DataTemplateSelectorDictionary.xaml" />
+                <ResourceDictionary Source="Style/TextErrorStyle.xaml" />
+                <ResourceDictionary Source="Style/ListViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

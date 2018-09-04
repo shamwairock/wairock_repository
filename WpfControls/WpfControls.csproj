@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WpfControls</RootNamespace>
     <AssemblyName>WpfControls</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
@@ -55,55 +58,69 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BitEnumControlView.xaml.cs">
-      <DependentUpon>BitEnumControlView.xaml</DependentUpon>
+    <Compile Include="Interfaces\ITreeNode.cs" />
+    <Compile Include="Models\TreeNode.cs" />
+    <Compile Include="ViewModels\TreeViewModel.cs" />
+    <Compile Include="Views\BitEnumView.xaml.cs">
+      <DependentUpon>BitEnumView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BitEnumControlViewModel.cs" />
-    <Compile Include="BitEnumeration.cs" />
+    <Compile Include="ViewModels\BitEnumViewModel.cs" />
+    <Compile Include="Models\BitEnumeration.cs" />
     <Compile Include="Interfaces\IBitEnumeration.cs" />
-    <Compile Include="EnumControlView.xaml.cs">
-      <DependentUpon>EnumControlView.xaml</DependentUpon>
+    <Compile Include="Views\EnumView.xaml.cs">
+      <DependentUpon>EnumView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EnumControlViewModel.cs" />
-    <Compile Include="DatePickerControlView.xaml.cs">
-      <DependentUpon>DatePickerControlView.xaml</DependentUpon>
+    <Compile Include="ViewModels\EnumViewModel.cs" />
+    <Compile Include="Views\DatePickerView.xaml.cs">
+      <DependentUpon>DatePickerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatePickerControlViewModel.cs" />
+    <Compile Include="ViewModels\DatePickerViewModel.cs" />
     <Compile Include="Interfaces\IEnumeration.cs" />
-    <Compile Include="ControlModel.cs" />
+    <Compile Include="Models\UiModel.cs" />
     <Compile Include="Interfaces\ILabel.cs" />
     <Compile Include="Interfaces\IVariable.cs" />
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="Enumeration.cs" />
-    <Compile Include="GroupBoxControlView.xaml.cs">
+    <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\Enumeration.cs" />
+    <Compile Include="Views\GroupBoxControlView.xaml.cs">
       <DependentUpon>GroupBoxControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GroupBoxControlViewModel.cs" />
+    <Compile Include="ViewModels\GroupBoxViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Renderer.cs" />
-    <Compile Include="StringControlViewModel.cs" />
-    <Compile Include="StringControlView.xaml.cs">
-      <DependentUpon>StringControlView.xaml</DependentUpon>
+    <Compile Include="ViewModels\StringViewModel.cs" />
+    <Compile Include="Views\StringView.xaml.cs">
+      <DependentUpon>StringView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabControlView.xaml.cs">
-      <DependentUpon>TabControlView.xaml</DependentUpon>
+    <Compile Include="Views\TabView.xaml.cs">
+      <DependentUpon>TabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabControlViewModel.cs" />
-    <Compile Include="TabItemView.xaml.cs">
+    <Compile Include="ViewModels\TabViewModel.cs" />
+    <Compile Include="Views\TabItemView.xaml.cs">
       <DependentUpon>TabItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabItemViewModel.cs" />
-    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="ViewModels\TabItemViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="Views\TreeView.xaml.cs">
+      <DependentUpon>TreeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="YDataTemplateSelector.cs" />
-    <Page Include="BitEnumControlView.xaml">
+    <Page Include="Style\ListViewStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EnumControlView.xaml">
+    <Page Include="Style\TextErrorStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DatePickerControlView.xaml">
+    <Page Include="Views\BitEnumView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EnumView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DatePickerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,11 +128,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Style\ListBoxResourceDictionary.xaml">
+    <Page Include="Style\DataTemplateSelectorDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GroupBoxControlView.xaml">
+    <Page Include="Views\GroupBoxControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,19 +148,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StringControlView.xaml">
+    <Page Include="Views\StringView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Style\OriginalBitEnumComboBoxControlTemplate.xaml">
+    <Page Include="Views\TabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TabControlView.xaml">
+    <Page Include="Views\TabItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TabItemView.xaml">
+    <Page Include="Views\TreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,11 +183,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

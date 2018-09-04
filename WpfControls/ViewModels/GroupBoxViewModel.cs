@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using WpfControls.Annotations;
+﻿using System.Collections.ObjectModel;
 
 namespace WpfControls
 {
-    public class GroupBoxControlViewModel : ControlModel
+    public class GroupBoxViewModel : UiModel
     {
         private string label;
         public string Label
@@ -18,6 +15,6 @@ namespace WpfControls
             }
         }
 
-        public ObservableCollection<ControlModel> ListViewItemModels { get; set; }
+        public ObservableCollection<UiModel> UiModels { get; set; }
     }
 }

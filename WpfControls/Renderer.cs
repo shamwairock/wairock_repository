@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using WpfControls.ViewModels;
 
 namespace WpfControls
 {
@@ -23,43 +22,55 @@ namespace WpfControls
                 var mainGrid = _element as Grid;
                 if (mainGrid == null) return;
 
-                var tabControlView = new TabControlView();
-                var tabControlViewModel = new TabControlViewModel();
+                var tabControlView = new TabView();
+                var tabControlViewModel = new TabViewModel();
 
                 tabControlViewModel.TabItemViewModels = new ObservableCollection<TabItemViewModel>();
                 var tabItemViewModel = new TabItemViewModel();
                 tabItemViewModel.Label = "Tab Item 1";
-                tabItemViewModel.ListViewItemModels = new ObservableCollection<ControlModel>();
-                var datePickerVm = new DatePickerControlViewModel();
+                tabItemViewModel.UiModels = new ObservableCollection<UiModel>();
+                var datePickerVm = new DatePickerViewModel();
                 datePickerVm.Label = "I am datePicker";
                 
-                var stringVm = new StringControlViewModel();
+                var stringVm = new StringViewModel();
                 stringVm.Label = "I am String";
-                stringVm.Value = "default";
+                stringVm.Value = "1234567890";
+           
 
-                var comboBoxVm = new EnumControlViewModel();
+                var comboBoxVm = new EnumViewModel();
                 comboBoxVm.Label = "I am a combobox";
                 comboBoxVm.Selections  = new ObservableCollection<IEnumeration>();
                 comboBoxVm.Selections.Add(new Enumeration() { Label = "kg/m3", Id = "1" });
                 comboBoxVm.Selections.Add(new Enumeration() { Label = "mmHg", Id = "2" });
                 comboBoxVm.SelectedItem = comboBoxVm.Selections.First();
 
-                var groupBox = new GroupBoxControlViewModel();
+                var groupBox = new GroupBoxViewModel();
                 groupBox.Label = "I am just a groupbox";
-                groupBox.ListViewItemModels = new ObservableCollection<ControlModel>();
-                groupBox.ListViewItemModels.Add(datePickerVm);
-                groupBox.ListViewItemModels.Add(stringVm);
-                groupBox.ListViewItemModels.Add(comboBoxVm);
+                groupBox.UiModels = new ObservableCollection<UiModel>();
+                groupBox.UiModels.Add(datePickerVm);
+                groupBox.UiModels.Add(stringVm);
+                groupBox.UiModels.Add(comboBoxVm);
 
-                var bitEnumViewModel =  new BitEnumControlViewModel();
+                var bitEnumViewModel =  new BitEnumViewModel();
                 bitEnumViewModel.Label = "I am a bit enum";
                 bitEnumViewModel.StrCheckedItems = "Selected values";
                 
-                tabItemViewModel.ListViewItemModels.Add(datePickerVm);
-                tabItemViewModel.ListViewItemModels.Add(stringVm);
-                tabItemViewModel.ListViewItemModels.Add(comboBoxVm);
-                tabItemViewModel.ListViewItemModels.Add(groupBox);
-                tabItemViewModel.ListViewItemModels.Add(bitEnumViewModel);
+                var tree = new TreeViewModel();
+                tree.Label = "Root";
+                tree.TreeNodes = new ObservableCollection<TreeNode>();
+                tree.TreeNodes.Add(new TreeNode() {Id="1", Label="Node1"});
+
+                var memberNode = new TreeNode() {Id = "2", Label = "Node2"};
+                memberNode.TreeNodes = new ObservableCollection<TreeNode>();
+                memberNode.TreeNodes.Add(new TreeNode() { Id = "1", Label = "Node3" });
+                tree.TreeNodes.Add(memberNode);
+
+                tabItemViewModel.UiModels.Add(datePickerVm);
+                tabItemViewModel.UiModels.Add(stringVm);
+                tabItemViewModel.UiModels.Add(comboBoxVm);
+                tabItemViewModel.UiModels.Add(groupBox);
+                tabItemViewModel.UiModels.Add(bitEnumViewModel);
+                tabItemViewModel.UiModels.Add(tree);
 
                 tabControlViewModel.TabItemViewModels.Add(tabItemViewModel);
                 tabControlView.DataContext = tabControlViewModel;

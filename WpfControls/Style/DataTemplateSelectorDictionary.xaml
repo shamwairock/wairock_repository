@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfControls">
+    <DataTemplate x:Key="datePickerViewDataTemplate">
+        <local:DatePickerView/>
+    </DataTemplate>
+    <DataTemplate x:Key="stringViewDataTemplate">
+        <local:StringView/>
+    </DataTemplate>
+    <DataTemplate x:Key="groupBoxViewDataTemplate">
+        <local:GroupBoxView/>
+    </DataTemplate>
+    <DataTemplate x:Key="enumViewDataTemplate">
+        <local:EnumView/>
+    </DataTemplate>
+    <DataTemplate x:Key="bitEnumViewDataTemplate">
+        <local:BitEnumView/>
+    </DataTemplate>
+    <DataTemplate x:Key="treeViewDataTemplate">
+        <local:TreeView/>
+    </DataTemplate>
+    <local:YDataTemplateSelector x:Key="YDataTemplateSelectorDictionary" DatePickerViewDataTemplate="{StaticResource datePickerViewDataTemplate}" StringViewDataTemplate="{StaticResource stringViewDataTemplate}" GroupBoxViewDataTemplate="{StaticResource groupBoxViewDataTemplate}" EnumViewDataTemplate="{StaticResource enumViewDataTemplate}" BitEnumViewDataTemplate="{StaticResource bitEnumViewDataTemplate}" TreeViewDataTemplate="{StaticResource treeViewDataTemplate}"/>
+</ResourceDictionary>

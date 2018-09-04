@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WpfControls
 {
-    public class BitEnumControlViewModel : ControlModel
+    public class BitEnumViewModel : UiModel
     { 
         public ObservableCollection<IBitEnumeration> Selections { get; set; }
 
@@ -37,7 +37,7 @@ namespace WpfControls
             return sb.ToString();
         }
 
-        public BitEnumControlViewModel()
+        public BitEnumViewModel()
         {
             if (Selections == null)
             {
@@ -58,6 +58,14 @@ namespace WpfControls
         {
             var selectedItems = Selections.ToList().Where(x => x.IsChecked).ToArray();
             StrCheckedItems = DisplayFormat(selectedItems);
+        }
+
+        private RelayCommand clickCommand;
+        public RelayCommand ClickCommand => clickCommand ?? new RelayCommand(OnClickCommand);
+
+        private void OnClickCommand(object obj)
+        {
+            
         }
     }
 }

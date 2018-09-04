@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfControls
 {
     /// <summary>
-    /// Interaction logic for TextControlView.xaml
+    /// Interaction logic for TreeView.xaml
     /// </summary>
-    public partial class StringControlView : UserControl
+    public partial class TreeView : UserControl
     {
-        public StringControlView()
+        public TreeView()
         {
             InitializeComponent();
         }

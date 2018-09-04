@@ -2,7 +2,7 @@
 
 namespace WpfControls
 {
-    public class EnumControlViewModel : ControlModel
+    public class EnumViewModel : UiModel
     {
         private ObservableCollection<IEnumeration> _selections;
 

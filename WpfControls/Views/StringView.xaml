@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WpfControls.StringView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfControls"
+             mc:Ignorable="d">
+    <Grid Height="35" Width="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Label}"/>
+        <TextBox Grid.Column="3" Grid.Row="1" 
+                 Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=Value, ValidatesOnNotifyDataErrors=True}" Style="{StaticResource TextErrorStyle}"/>
+        <!--Using Validation Rules is not quite appropriate in our context, 
+                                as the binding does not work correctly since the ValidationRules is not part of visual tree 
+                                and therefore cannot get the bound property correctly. 
+        <TextBox Grid.Column="3" Grid.Row="1">
+            <TextBox.Text>
+                <Binding Path="Value" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:MaxLengthRule>
+                            <local:MaxLengthRule.DependencyObjectWrapper>
+                               
+                                <local:DependencyObjectWrapper MaxLength="{Binding Path=MaxLength}"/>
+                            </local:MaxLengthRule.DependencyObjectWrapper>
+                        </local:MaxLengthRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+    </Grid>
+</UserControl>
+
+
+

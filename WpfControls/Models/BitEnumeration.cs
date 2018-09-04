@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using WpfControls.Annotations;
-
-namespace WpfControls
+﻿namespace WpfControls
 {
     public class BitEnumeration : BaseViewModel, IBitEnumeration
     {
