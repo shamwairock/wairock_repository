@@ -73,6 +73,16 @@ namespace WpfControls
             {
                 Validate();
             }
+
+            base.OnPropertyChanged(propertyName);
+        }
+
+        private RelayCommand lostFocusCommand;
+        public RelayCommand LostFocusCommand => lostFocusCommand ?? new RelayCommand(OnLostFocus);
+
+        private void OnLostFocus(object obj)
+        {
+            
         }
     }
 }

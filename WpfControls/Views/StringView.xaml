@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d">
     <Grid Height="35" Width="500">
         <Grid.ColumnDefinitions>
@@ -20,24 +21,14 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Label}"/>
         <TextBox Grid.Column="3" Grid.Row="1" 
-                 Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=Value, ValidatesOnNotifyDataErrors=True}" Style="{StaticResource TextErrorStyle}"/>
-        <!--Using Validation Rules is not quite appropriate in our context, 
-                                as the binding does not work correctly since the ValidationRules is not part of visual tree 
-                                and therefore cannot get the bound property correctly. 
-        <TextBox Grid.Column="3" Grid.Row="1">
-            <TextBox.Text>
-                <Binding Path="Value" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:MaxLengthRule>
-                            <local:MaxLengthRule.DependencyObjectWrapper>
-                               
-                                <local:DependencyObjectWrapper MaxLength="{Binding Path=MaxLength}"/>
-                            </local:MaxLengthRule.DependencyObjectWrapper>
-                        </local:MaxLengthRule>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>-->
+                 Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=Value, ValidatesOnNotifyDataErrors=True}" 
+                 Style="{StaticResource TextErrorStyle}" Name="textBox">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="LostFocus" >
+                    <i:InvokeCommandAction Command="{Binding LostFocusCommand}" CommandParameter="{Binding Path=Text, ElementName=textBox}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
     </Grid>
 </UserControl>
 
