@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Contacts>
+  <Contact>
+    <Name>Sample Name 1</Name>
+    <MobileNumber>111111111</MobileNumber>
+    <email>sample@one.com</email>
+    <address>Sample Address 1</address>
+  </Contact>
+  <Contact>
+    <Name>Sample Name 2</Name>
+    <MobileNumber>222222222</MobileNumber>
+    <email>sample@two.com</email>
+    <address>Sample Address 2</address>
+  </Contact>
+</Contacts>
