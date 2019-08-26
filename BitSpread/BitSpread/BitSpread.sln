@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.BusinessLogic", "BitSpread.Security.BusinessLogic\BitSpread.Security.BusinessLogic.csproj", "{264FAF30-26D4-4636-9D62-90FFDEC402FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.BusinessLogic.XUnitTest", "BitSpread.Security.BusinessLogic.XUnitTest\BitSpread.Security.BusinessLogic.XUnitTest.csproj", "{FB02A00E-F0E7-4B6F-A7DC-CF619AFC76AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.DataAccess", "BitSpread.Security.DataAccess\BitSpread.Security.DataAccess.csproj", "{562A7581-B41D-4921-8164-A784A1BF98F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.DataModel", "BitSpread.Security.DataModel\BitSpread.Security.DataModel.csproj", "{7EC9B6B4-79BC-412A-8CA0-36BC134D07A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.Interfaces", "BitSpread.Security.Interfaces\BitSpread.Security.Interfaces.csproj", "{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{264FAF30-26D4-4636-9D62-90FFDEC402FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264FAF30-26D4-4636-9D62-90FFDEC402FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264FAF30-26D4-4636-9D62-90FFDEC402FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264FAF30-26D4-4636-9D62-90FFDEC402FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB02A00E-F0E7-4B6F-A7DC-CF619AFC76AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB02A00E-F0E7-4B6F-A7DC-CF619AFC76AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB02A00E-F0E7-4B6F-A7DC-CF619AFC76AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB02A00E-F0E7-4B6F-A7DC-CF619AFC76AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{562A7581-B41D-4921-8164-A784A1BF98F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562A7581-B41D-4921-8164-A784A1BF98F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562A7581-B41D-4921-8164-A784A1BF98F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562A7581-B41D-4921-8164-A784A1BF98F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC9B6B4-79BC-412A-8CA0-36BC134D07A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC9B6B4-79BC-412A-8CA0-36BC134D07A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC9B6B4-79BC-412A-8CA0-36BC134D07A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC9B6B4-79BC-412A-8CA0-36BC134D07A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A923214-3D85-4E62-9B65-E8C959A601ED}
+	EndGlobalSection
+EndGlobal
