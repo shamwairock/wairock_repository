@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BitSpread.Security.DataModel\BitSpread.Security.DataModel.csproj" />
+    <ProjectReference Include="..\BitSpread.Security.Interfaces\BitSpread.Security.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MockOrders.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
