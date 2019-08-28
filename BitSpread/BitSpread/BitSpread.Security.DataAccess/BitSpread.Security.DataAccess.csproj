@@ -6,11 +6,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BitSpread.Security.DataModel\BitSpread.Security.DataModel.csproj" />
+    <ProjectReference Include="..\BitSpread.Security.Exceptions\BitSpread.Security.Exceptions.csproj" />
     <ProjectReference Include="..\BitSpread.Security.Interfaces\BitSpread.Security.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="MockOrders.txt">
+    <None Update="MockOrdersWithMultipleMatchingPointAndImbalance.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="MockOrdersSummary.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

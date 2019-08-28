@@ -1,0 +1,15 @@
+﻿Volumn|Price|OrderType
+10|100|Buy
+50|99|Buy
+100|98|Buy
+30|97|Buy
+100|97.5|Buy
+60|97.5|Sell
+55|96|Buy
+40|95|Buy
+80|97|Sell
+60|98|Sell
+75|99.5|Sell
+90|100|Sell
+100|101|Sell
+20|102|Sell

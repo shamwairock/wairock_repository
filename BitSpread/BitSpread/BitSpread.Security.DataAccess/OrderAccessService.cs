@@ -3,47 +3,43 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using BitSpread.Security.DataModel;
+using BitSpread.Security.Exceptions;
 using BitSpread.Security.Interfaces;
 
 namespace BitSpread.Security.DataAccess
 {
     public class OrderAccessService : IOrderAccessService
     {
+        private readonly IOrderAccess orderAccess;
+
+        public OrderAccessService()
+        {
+            orderAccess = new OrderAccess();
+        }
+
+        public OrderAccessService(bool isMock, string mockOrdersPath, string mockOrdersSummaryPath)
+        {
+            if (isMock)
+            {
+                orderAccess = new OrderAccessMock();
+                ((OrderAccessMock) orderAccess).MockOrdersSummaryPath = mockOrdersSummaryPath;
+                ((OrderAccessMock) orderAccess).MockOrdersPath = mockOrdersPath;
+            }
+            else
+            {
+                orderAccess = new OrderAccess();
+            }
+        }
+
         public List<Order> GetOrders()
         {
-            var lines = File.ReadAllLines(@"MockOrders.txt");
-            var orders = new List<Order>();
+            return orderAccess.GetOrders();
+        }
 
-            if (lines != null)
-            {
-                foreach (var line in lines.Skip(1))
-                {
-                    if (string.IsNullOrEmpty(line))
-                    {
-                        continue;
-                    }
-
-                    var chunks = line.Split('|');
-                    double.TryParse(chunks[0], NumberStyles.Any, CultureInfo.InvariantCulture, out double volume);
-                    double.TryParse(chunks[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double price);
-                    Enum.TryParse(chunks[2], true, out OrderType orderType);
-
-                    var order = new Order()
-                    {
-                        Timestamp = DateTime.Now,
-                        Volume = volume,
-                        Price = price,
-                        OrderType = orderType
-                    };
-
-                    orders.Add(order);
-                }
-
-            }
-
-            return orders;
+        public double GetLastClosingPrice()
+        {
+            return orderAccess.GetLastClosingPrice();
         }
     }
 }

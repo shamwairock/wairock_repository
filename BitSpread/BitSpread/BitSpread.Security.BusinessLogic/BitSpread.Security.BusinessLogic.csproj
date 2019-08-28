@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BitSpread.Security.DataAccess\BitSpread.Security.DataAccess.csproj" />
     <ProjectReference Include="..\BitSpread.Security.DataModel\BitSpread.Security.DataModel.csproj" />
+    <ProjectReference Include="..\BitSpread.Security.Exceptions\BitSpread.Security.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>
