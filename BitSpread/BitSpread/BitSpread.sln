@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitSpread.Security.DataMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitSpread.Security.Interfaces", "BitSpread.Security.Interfaces\BitSpread.Security.Interfaces.csproj", "{C129AFE2-E617-443A-89B0-FA23B9ADDBFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.Exceptions", "BitSpread.Security.Exceptions\BitSpread.Security.Exceptions.csproj", "{45D1C7AC-B4E2-499D-AC29-4BCD21A7E644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitSpread.Security.Exceptions", "BitSpread.Security.Exceptions\BitSpread.Security.Exceptions.csproj", "{45D1C7AC-B4E2-499D-AC29-4BCD21A7E644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.Server.API", "BitSpread.Security.Server.API\BitSpread.Security.Server.API.csproj", "{B3BB6472-8F57-49C1-A1EB-EC3756E39C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitSpread.Security.DataAccessFactory", "BitSpread.Security.DataAccessFactory\BitSpread.Security.DataAccessFactory.csproj", "{9B02583A-1C87-4B3E-85C2-51D4E430DFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{45D1C7AC-B4E2-499D-AC29-4BCD21A7E644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D1C7AC-B4E2-499D-AC29-4BCD21A7E644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D1C7AC-B4E2-499D-AC29-4BCD21A7E644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3BB6472-8F57-49C1-A1EB-EC3756E39C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3BB6472-8F57-49C1-A1EB-EC3756E39C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3BB6472-8F57-49C1-A1EB-EC3756E39C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3BB6472-8F57-49C1-A1EB-EC3756E39C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B02583A-1C87-4B3E-85C2-51D4E430DFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B02583A-1C87-4B3E-85C2-51D4E430DFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B02583A-1C87-4B3E-85C2-51D4E430DFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B02583A-1C87-4B3E-85C2-51D4E430DFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
