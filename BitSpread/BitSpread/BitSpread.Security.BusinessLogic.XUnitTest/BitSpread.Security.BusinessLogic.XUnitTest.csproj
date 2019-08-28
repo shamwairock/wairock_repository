@@ -17,4 +17,19 @@
     <ProjectReference Include="..\BitSpread.Security.DataAccess\BitSpread.Security.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="MockOrders.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="MockOrdersSummary.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="MockOrdersWithMultipleMatchingPoint.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="MockOrdersWithMultipleMatchingPointAndImbalance.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

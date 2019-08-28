@@ -25,7 +25,7 @@ namespace BitSpread.Security.BusinessLogic.XUnitTest
         [Fact]
         public void TestGetNormalizedOrders()
         {
-            IOrderAccessService orderAccessService = new OrderAccessService();
+            IOrderAccessService orderAccessService = new OrderAccessService(true, @"MockOrders.txt", @"MockOrdersSummary.txt");
             var orders = orderAccessService.GetOrders();
 
             var calculator = new Calculator();
@@ -38,6 +38,54 @@ namespace BitSpread.Security.BusinessLogic.XUnitTest
             });
 
             Assert.Equal(9, normalizedOrders.Count);
+        }
+
+        [Fact]
+        public void TestGetOpeningPriceAndVolume()
+        {
+            IOrderAccessService orderAccessService = new OrderAccessService(true, @"MockOrders.txt", @"MockOrdersSummary.txt");
+            var orders = orderAccessService.GetOrders();
+            var lastClosingPrice = orderAccessService.GetLastClosingPrice();
+
+            var calculator = new Calculator();
+            var normalizedOrders = calculator.GetNormalizedOrders(orders);
+
+            var result = calculator.PredictOpeningPrice(normalizedOrders, lastClosingPrice);
+
+            Assert.Equal(98, result.Item1);
+            Assert.Equal(140, result.Item2);
+        }
+
+        [Fact]
+        public void TestGetOpeningPriceAndVolume2()
+        {
+            IOrderAccessService orderAccessService = new OrderAccessService(true, @"MockOrdersWithMultipleMatchingPoint.txt", @"MockOrdersSummary.txt");
+            var orders = orderAccessService.GetOrders();
+            var lastClosingPrice = orderAccessService.GetLastClosingPrice();
+
+            var calculator = new Calculator();
+            var normalizedOrders = calculator.GetNormalizedOrders(orders);
+
+            var result = calculator.PredictOpeningPrice(normalizedOrders, lastClosingPrice);
+
+            Assert.Equal(97.5, result.Item1);
+            Assert.Equal(140, result.Item2);
+        }
+
+        [Fact]
+        public void TestGetOpeningPriceAndVolume3()
+        {
+            IOrderAccessService orderAccessService = new OrderAccessService(true, @"MockOrdersWithMultipleMatchingPointAndImbalance.txt", @"MockOrdersSummary.txt");
+            var orders = orderAccessService.GetOrders();
+            var lastClosingPrice = orderAccessService.GetLastClosingPrice();
+
+            var calculator = new Calculator();
+            var normalizedOrders = calculator.GetNormalizedOrders(orders);
+
+            var result = calculator.PredictOpeningPrice(normalizedOrders, lastClosingPrice);
+
+            Assert.Equal(97.5, result.Item1);
+            Assert.Equal(140, result.Item2);
         }
     }
 }

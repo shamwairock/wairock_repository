@@ -7,8 +7,6 @@ namespace BitSpread.Security.BusinessLogic
 {
     public class Calculator : ICalculator
     {
-        private const double TOLERANCE = 0.001;
-
         public double GetMatchVolume(double bidVolume, double askVolume)
         {
             return bidVolume >= askVolume ? askVolume : bidVolume;
@@ -50,15 +48,20 @@ namespace BitSpread.Security.BusinessLogic
                 double bidVolume = 0;
                 double askVolume = 0;
                 double price = 0;
+                var bidTimestamp = DateTime.MinValue;
+                var askTimestamp = DateTime.MinValue;
+
                 if (bidOrder != null)
                 {
                     bidVolume = bidOrder.Volume;
+                    bidTimestamp = bidOrder.Timestamp;
                     price = bidOrder.Price;
                 }
 
                 if (askOrder != null)
                 {
                     askVolume = askOrder.Volume;
+                    askTimestamp = askOrder.Timestamp;
                     price = askOrder.Price;
                 }
 
@@ -68,11 +71,21 @@ namespace BitSpread.Security.BusinessLogic
                     ImbalanceVolume = GetAbsImbalanceVolume(bidVolume, askVolume),
                     Price = price,
                     AskVolume = askVolume,
-                    BidVolume = bidVolume
+                    AskTimestamp =  askTimestamp,
+                    BidVolume = bidVolume,
+                    BidTimestamp = bidTimestamp
                 });
             }
 
             return normalizedOrders.OrderBy(x => x.Price).ToList();
+        }
+
+        public Tuple<double, double> PredictOpeningPrice(List<NormalizedOrder> orders, double lastClosingPrice)
+        {
+            var predictor = PredictorFactory.CreateInstance(orders);
+
+            return predictor.PredictOrder(orders, lastClosingPrice);
+
         }
     }
 }
