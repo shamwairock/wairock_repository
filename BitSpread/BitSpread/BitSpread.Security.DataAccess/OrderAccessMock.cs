@@ -68,6 +68,7 @@ namespace BitSpread.Security.DataAccess
 
             if (lines != null)
             {
+                var index = 1;
                 foreach (var line in lines.Skip(1))
                 {
                     if (string.IsNullOrEmpty(line))
@@ -79,13 +80,16 @@ namespace BitSpread.Security.DataAccess
                     double.TryParse(chunks[0], NumberStyles.Any, CultureInfo.InvariantCulture, out double volume);
                     double.TryParse(chunks[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double price);
                     Enum.TryParse(chunks[2], true, out OrderType orderType);
+                    var securityCode = chunks[3].ToString();
 
                     var order = new Order()
                     {
+                        OrderId = index++.ToString(),
                         Timestamp = DateTime.Now,
                         Volume = volume,
                         Price = price,
-                        OrderType = orderType
+                        OrderType = orderType,
+                        SecurityCode = securityCode
                     };
 
                     orders.Add(order);

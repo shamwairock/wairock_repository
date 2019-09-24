@@ -1,0 +1,2 @@
+﻿DateTime|OpeningPrice|ClosingPrice
+27/8/2019|68|87
