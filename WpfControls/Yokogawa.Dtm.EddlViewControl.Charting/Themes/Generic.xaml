@@ -1,0 +1,677 @@
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Yokogawa.Dtm.EddlViewControl.Charting"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    >
+
+    <!--<local:ScaleLabelDrawingConverter x:Key="ScaleLabelDrawingConverter"/>-->
+    <local:YAxisZoneVisibleConverter x:Key="YAxisZoneVisibleConverter" />
+    <local:YAxisZoneHiddenConverter x:Key="YAxisZoneHiddenConverter" />
+    <local:VisibletoVisibilityCollapsedConverter x:Key="VisibletoVisibilityCollapsedConverter" />
+    <local:MarginTopConverter x:Key="MarginTopConverter" />
+    <local:MarginBottomConverter x:Key="MarginBottomConverter" />
+    <local:MarginLeftConverter x:Key="MarginLeftConverter" />
+    <local:MarginRightConverter x:Key="MarginRightConverter" />
+    <local:YAxisTitlePosTransConverter x:Key="YAxisTitlePosTransConverter" />
+    <local:YAxisPosTransConverter x:Key="YAxisPosTransConverter" />
+
+    <ControlTemplate x:Key="ThumbTemplateStart"
+					 TargetType="Thumb">
+        <Border BorderThickness="0,0,0,0" >
+            <Border.Background>
+                <SolidColorBrush Color="Transparent" Opacity="0.1" />
+            </Border.Background>
+            <Rectangle Fill="{TemplateBinding Background}"
+                       Opacity="0.5"
+                       Margin="1,1,1,5"
+                       Stroke="Black"
+                       StrokeThickness="1" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ThumbTemplateEnd"
+					 TargetType="Thumb">
+        <Border BorderThickness="0,0,0,0"  >
+            <Border.Background>
+                <SolidColorBrush Color="Blue" Opacity="0.1" />
+            </Border.Background>
+            <Rectangle Fill="{TemplateBinding Background}"
+                       Opacity="0.5"
+                       Margin="1,5,1,1"
+                       Stroke="Black"
+                       StrokeThickness="1" />
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type local:RangeSelector}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RangeSelector}">
+                    <Grid>
+                        <Canvas x:Name="PART_Track">
+                            <Border Background="Blue"
+                                    Opacity="0.1"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0,0,0,0"
+									Canvas.Top="{TemplateBinding ComputedStartOffset}"
+									Height="{TemplateBinding ComputedRangeWidth}"
+                                    Width="{Binding ActualWidth, ElementName=PART_Track}"
+                                    SnapsToDevicePixels="True"/>
+                            <Thumb x:Name="PART_Start"
+								   Height="18"
+								   Template="{StaticResource ThumbTemplateStart}"
+								   Canvas.Top="{TemplateBinding ComputedStartOffset}"
+								   Width="{Binding ActualWidth, ElementName=PART_Track}"
+                                   Cursor="SizeNS"/>
+                            <Thumb x:Name="PART_End"
+								   Height="18"
+								   Template="{StaticResource ThumbTemplateEnd}"
+								   Canvas.Top="{TemplateBinding ComputedEndOffset}"
+								   Width="{Binding ActualWidth, ElementName=PART_Track}"
+                                   Cursor="SizeNS"/>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:RangeSelectorAdornerCtrl}">
+        <Setter Property="Visibility" Value="{Binding Path=Visibility}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RangeSelectorAdornerCtrl}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+
+                        <local:RangeSelector Minimum="{Binding Path=Minimum}" 
+                             Maximum="{Binding Path=Maximum}" 
+                             RangeStart="{Binding Path=RangeStart, Mode=TwoWay}" 
+                             RangeEnd="{Binding Path=RangeEnd, Mode=TwoWay}" 
+                             HorizontalAlignment="Stretch"
+                             />
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:RangeSelectorContainer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RangeSelectorContainer}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{ TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="scroll_thumb_style" TargetType="Thumb">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Width="13" Fill="#7D7D7D" RadiusX="5" RadiusY="5">
+                    </Rectangle>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="yAxisToolTip" TargetType="{x:Type ToolTip}">
+        <Setter Property="HorizontalOffset" Value="0" />
+        <Setter Property="VerticalOffset" Value="-5" />
+        <Setter Property="Background" Value="LightYellow" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Meiryo" />
+    </Style>
+
+    <ControlTemplate x:Key="scroll_background" TargetType="RepeatButton">
+        <Border Background="Transparent">
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="ScrollBar_style" TargetType="ScrollBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid Width="15">
+                        <Border Width="13" HorizontalAlignment="Center" CornerRadius="5" Background="Transparent">
+                        </Border>
+                        <Track HorizontalAlignment="Center" x:Name="PART_Track" Width="{TemplateBinding Width}" Maximum="{TemplateBinding Maximum}" Minimum="{TemplateBinding Minimum}"
+                                    Value="{TemplateBinding Value}"  IsDirectionReversed="true">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Template="{StaticResource scroll_background}" Command="ScrollBar.LineUpCommand"  />
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Template="{StaticResource scroll_background}" Command="ScrollBar.LineDownCommand" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Style="{StaticResource scroll_thumb_style}" >
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="scrollviewer_style" TargetType="ScrollViewer">
+        <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollContentPresenter Grid.Column="1" x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" />
+            <ScrollBar Grid.Column="0" x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Style="{DynamicResource ScrollBar_style}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListBox_style"  TargetType="ListBox">
+        <Border x:Name="Border" >
+            <ScrollViewer Margin="0" Focusable="false" Template="{StaticResource scrollviewer_style }">
+                <StackPanel IsItemsHost="True" />
+            </ScrollViewer>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsGrouping" Value="true">
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="ChartPolylineCurveTemplate">
+        <local:ChartPolylineCurve DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartBezierCurveTemplate">
+        <local:ChartBezierCurve DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartScatteredPointsTemplate">
+        <local:ChartScatteredPoints DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartHorizontalLineTemplate">
+        <local:ChartHorizontalLine DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartVerticalLineTemplate">
+        <local:ChartVerticalLine DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartHorizontalBarTemplate">
+        <local:ChartHorizontalBar DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ChartVerticalBarTemplate">
+        <local:ChartVerticalBar DataSeries="{Binding}" />
+    </DataTemplate>
+    
+    <local:GenericDataTemplateSelector x:Key="sourcesItemTemplateSelector">
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartPolylineCurve}"
+											Template="{StaticResource ChartPolylineCurveTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="Polyline"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartBezierCurve}"
+											Template="{StaticResource ChartBezierCurveTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="BezierCurve"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartScatteredPoints}"
+											Template="{StaticResource ChartScatteredPointsTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="ScatteredPoints"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartHorizontalLine}"
+											Template="{StaticResource ChartHorizontalLineTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="HorizontalLine"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartVerticalLine}"
+											Template="{StaticResource ChartVerticalLineTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="VerticalLine"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartHorizontalBar}"
+											Template="{StaticResource ChartHorizontalBarTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="HorizontalBar"/>
+
+        <local:GenericDataTemplateSelectorItem
+											PropertyName="VisualCue" 
+											Value="{x:Type local:ChartVerticalBar}"
+											Template="{StaticResource ChartVerticalBarTemplate}"
+											TemplatedType="{x:Type local:DataSeries}"
+											Description="VerticalBar"/>
+    </local:GenericDataTemplateSelector>
+    
+    <Style TargetType="{x:Type local:PlotterArea}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PlotterArea}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ListBox                                
+                             ItemsSource="{TemplateBinding DataSeries}"
+                             ItemTemplateSelector="{StaticResource sourcesItemTemplateSelector}">
+                            <!-- ItemsPanel -->
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.Style>
+                                <Style TargetType="{x:Type ListBox}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border x:Name="LayoutRoot" 
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ScrollViewer Background="Transparent">
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="ItemContainerStyle">
+                                        <Setter.Value>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                            <ContentPresenter x:Name="ContentHost" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="Selector.IsSelected" Value="True">
+                                                                    <Setter TargetName="ContentHost" Property="Effect" Value="{Binding Path=CurveSelectedEffect, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PlotterArea}}}" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.Style>
+                            <!-- Template -->
+                            <ListBox.Template>
+                                <ControlTemplate >
+                                    <Grid Margin="0" ShowGridLines="False">
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:PlotterAreaBackground}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PlotterAreaBackground}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:AxesContainer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AxesContainer}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type local:HorizAxesContainer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:HorizAxesContainer}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ItemsControl HorizontalAlignment="Stretch"   
+                                          Background="Transparent"                      
+                                          BorderThickness="0"
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                          ItemsSource="{TemplateBinding Axes}" >
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.Resources>
+
+                                <DataTemplate DataType="{x:Type local:LinearXAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" >
+                                        <Grid x:Name="xAxisGrid" Grid.Row="0" Background="Transparent" VerticalAlignment="Bottom" 
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HorizAxesContainer}}}" >
+                                            <local:LinearXAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtBelow" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                                
+                                <DataTemplate DataType="{x:Type local:LogarithmicXAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" >
+                                        <Grid x:Name="xAxisGrid" Grid.Row="0" Background="Transparent" VerticalAlignment="Bottom" 
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HorizAxesContainer}}}" >
+                                            <local:LogarithmicXAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtBelow" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type local:StripLinearXAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" >
+                                        <Grid x:Name="xAxisGrid" Grid.Row="0" Background="Transparent" VerticalAlignment="Bottom" 
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HorizAxesContainer}}}" >
+                                            <local:StripLinearXAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtBelow" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type local:ScopeLinearXAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" >
+                                        <Grid x:Name="xAxisGrid" Grid.Row="0" Background="Transparent" VerticalAlignment="Bottom" 
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HorizAxesContainer}}}" >
+                                            <local:ScopeLinearXAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtBelow"/>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type local:SweepLinearXAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" >
+                                        <Grid x:Name="xAxisGrid" Grid.Row="0" Background="Transparent" VerticalAlignment="Bottom" 
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HorizAxesContainer}}}" >
+                                            <local:SweepLinearXAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtBelow" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                                
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:VerticalAxesContainer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:VerticalAxesContainer}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsControl VerticalAlignment="Stretch"   
+                                          Background="Transparent"
+                                          Padding="-1"                           
+                                          BorderThickness="0"
+                                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                          ItemsSource="{TemplateBinding Axes}"
+                                          >
+                            <ItemsControl.Style>
+                                <Style TargetType="{x:Type ItemsControl}">
+                                    <Setter Property="ItemsPanel" >
+                                        <Setter.Value>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" />
+                                            </ItemsPanelTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=AxisZone, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="AUTOZONE">
+                                            <Setter Property="ItemsPanel" >
+                                                <Setter.Value>
+                                                    <ItemsPanelTemplate>
+                                                        <Grid />
+                                                    </ItemsPanelTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ItemsControl.Style>
+
+                            <ItemsControl.Resources>
+
+                                <DataTemplate DataType="{x:Type local:LinearYAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" HorizontalAlignment="Right">
+                                        <Grid x:Name="yAxisGrid" Background="Transparent" HorizontalAlignment="Left"
+                                               Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" >
+                                            <local:LinearYAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtLeft" />
+                                        </Grid>
+                                        
+                                        <local:RangeSelectorContainer  x:Name="PART_DragStretChTool" Grid.Column="1" Grid.ColumnSpan="2" 
+                                                                       HorizontalAlignment="Stretch"        
+                                                                       Height="{Binding ElementName=yAxisCtrl, Path=Height}" 
+                                                                       Margin="{Binding ElementName=yAxisGrid, Path=Margin}"
+                                                                       RangeStart="{Binding Path=TopLeftPosScale,Mode=TwoWay}" 
+                                                                       RangeEnd="{Binding Path=BottomRightPosScale,Mode=TwoWay}" >
+                                            <local:RangeSelectorContainer.Style>
+                                                <Style TargetType="{x:Type local:RangeSelectorContainer}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="EDITZONE">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="MULTIAXESZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="USERZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="FULLZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="SLIDEZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="AUTOZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsVisible}" Value="false">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </local:RangeSelectorContainer.Style>
+                                        </local:RangeSelectorContainer>
+                                    </Grid>
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type local:LogarithmicYAxis}">
+                                    <Grid Focusable="False" Background="Transparent" Margin="0" HorizontalAlignment="Right">
+                                        <Grid Grid.Column="2" x:Name="yAxisGrid" Background="Transparent" HorizontalAlignment="Left"
+                                              Margin="{Binding Path=AxisMargin,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" >
+                                            <local:LogarithmicYAxisControl DataContext="{Binding}" Axis="{Binding}" ContentLayout="AtLeft" />
+                                        </Grid>
+                                        <local:RangeSelectorContainer  x:Name="PART_DragStretChTool" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"                                                           
+                                                           Height="{Binding ElementName=yAxisGrid, Path=Height}" Margin="{Binding ElementName=yAxisGrid, Path=Margin}"
+                                                           RangeStart="{Binding Path=TopLeftPosScale,Mode=TwoWay}" RangeEnd="{Binding Path=BottomRightPosScale,Mode=TwoWay}" >
+                                            <local:RangeSelectorContainer.Style>
+                                                <Style TargetType="{x:Type local:RangeSelectorContainer}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="EDITZONE">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="MULTIAXESZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="USERZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="FULLZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="SLIDEZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=AxisZone,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:VerticalAxesContainer}}}" Value="AUTOZONE">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsVisible}" Value="false">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </local:RangeSelectorContainer.Style>
+                                        </local:RangeSelectorContainer>
+                                    </Grid>
+                                </DataTemplate>
+                                
+                            </ItemsControl.Resources>
+
+                        </ItemsControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="HorizontalChartTemplate" TargetType="{x:Type local:Chart}" >
+        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid Background="Transparent" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Plot Area BackGround -->
+                <local:PlotterAreaBackground  x:Name="PART_PlotterAreaBackground" 
+                                              Grid.Row="0" 
+                                              Grid.Column="1"
+                                              Focusable="False"
+                                              Margin="{Binding Path=PlotAreaMargin, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"                                 
+                                              Background="{Binding Path=PlotAreaBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}" >
+                </local:PlotterAreaBackground>
+
+                <!-- AxisGrid -->
+                <Grid x:Name="PART_AxesGrid" 
+                      Grid.Row="0" 
+                      Grid.Column="1" 
+                      Focusable="False" 
+                      Background="Transparent" 
+                      Margin="{Binding Path=PlotAreaMargin, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}">
+                    <local:MultiAxesGrid Orientation="HORIZONTAL" 
+                                         SnapsToDevicePixels="True"
+                                         Axes="{Binding Path=YAxes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                         GridVisibility="LONGTICKS"   />
+                    <local:MultiAxesGrid Orientation="VERTICAL" 
+                                         SnapsToDevicePixels="True"
+                                         Axes="{Binding Path=XAxes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                         GridVisibility="LONGTICKS"   />
+                </Grid>
+
+                <!-- Plot Area Border -->
+                <local:PlotterAreaBorder x:Name="PART_PlotAreaBorder" 
+                                         Grid.Row="0" 
+                                         Grid.Column="1" 
+                                         Focusable="False" 
+                                         Margin="{Binding Path=PlotAreaMargin, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                         BorderBrush="{Binding Path=PlotAreaBorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                         BorderThickness="{Binding Path=PlotAreaBorderThickness, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}" 
+                                         SnapsToDevicePixels="True"
+                                         
+                                         >
+                </local:PlotterAreaBorder>
+
+                <!-- X Axes -->
+                <local:HorizAxesContainer x:Name="PART_XAxesContainer" 
+                                          Grid.Row="1" 
+                                          Grid.Column="1" 
+                                          Focusable="False" 
+                                          Background="Transparent"
+                                          Axes="{Binding Path=XAxes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                          
+                                          Margin="0"
+                                          AxisMargin="{Binding Path=XAxisMargin,Mode=OneWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                          
+                                          FontFamily="{Binding Path=FontFamily, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                          FontStyle="{Binding Path=FontStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                          />
+
+                <!-- Y Axes -->
+                <local:VerticalAxesContainer x:Name="PART_YAxesContainer" 
+                                             Grid.Row="0" 
+                                             Grid.RowSpan="1" 
+                                             Grid.Column="0" 
+                                             Focusable="False" 
+                                             Background="Transparent" 
+                                             Axes="{Binding Path=YAxes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                             AxisZone="{Binding YAxisZone, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                             
+                                             Margin="0"
+                                             AxisMargin="{Binding Path=YAxisMargin,Mode=OneWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}" 
+                                             
+                                             FontFamily="{Binding Path=FontFamily,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                             FontStyle="{Binding Path=FontStyle, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                             />
+                
+                <!-- Plot Area -->
+                <local:PlotterArea x:Name="PART_PlotterArea" 
+                                   Background="Transparent"
+                                   DataSeries="{Binding Path=DataSeries, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                   CurveSelectedEffect="{Binding Path=CurveSelectedEffect, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"
+                                   Grid.Row="0" 
+                                   Grid.Column="1"
+                                   Margin="{Binding Path=PlotAreaMargin, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Chart}}}"/>
+                
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type local:Chart}">
+        <Setter Property="Template" Value="{StaticResource HorizontalChartTemplate}" />
+    </Style>
+    
+</ResourceDictionary>

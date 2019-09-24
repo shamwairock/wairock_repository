@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2484514-E74A-4FE1-B37C-0AE2DB758128}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yokogawa.Dtm.EddlViewControl.Charting</RootNamespace>
+    <AssemblyName>Yokogawa.Dtm.EddlViewControl.Charting</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\BuildSolution\Output\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\BuildSolution\Output\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Yokogawa.Dtm.EddlViewControl.Charting.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\..\BuildSolution\Output\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\..\BuildSolution\Output\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AxesContainers\AxesContainer.cs" />
+    <Compile Include="Axes\AxisContentLayout.cs" />
+    <Compile Include="Axes\Base\AxisControl.cs" />
+    <Compile Include="AxesContainers\HorizAxesContainer.cs" />
+    <Compile Include="Axes\Base\HorizAxisControl.cs" />
+    <Compile Include="Axes\TickCountChange.cs" />
+    <Compile Include="AxesContainers\VerticalAxesContainer.cs" />
+    <Compile Include="Axes\Base\VerticalAxisControl.cs" />
+    <Compile Include="Axes\Base\AxisVisual.cs" />
+    <Compile Include="Axes\AxisOrientation.cs" />
+    <Compile Include="Axes\AxisPosition.cs" />
+    <Compile Include="AxesGrid\GridLinePosition.cs" />
+    <Compile Include="Axes\IAxisRender.cs" />
+    <Compile Include="Axes\IAxisRenderBound.cs" />
+    <Compile Include="Axes\IAxisVisualModel.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\LinearRealTimeXAxis.cs" />
+    <Compile Include="Axes\IUpdate.cs" />
+    <Compile Include="Axes\Base\AxisVisualGraph.cs" />
+    <Compile Include="Axes\LinearAxes\ILinearAxisVisualModel.cs" />
+    <Compile Include="Axes\LinearAxes\LinearAxisGrapScale.cs" />
+    <Compile Include="Axes\LinearAxes\LinearAxisVisual.cs" />
+    <Compile Include="Axes\LinearAxes\LinearAxisVisualGraph.cs" />
+    <Compile Include="Axes\LinearAxes\LinearTickCalculator.cs" />
+    <Compile Include="Axes\LinearAxes\LinearTickCreator.cs" />
+    <Compile Include="Axes\LinearAxes\LinearTickLabelFormator.cs" />
+    <Compile Include="Axes\LinearAxes\LinearTickPosition.cs" />
+    <Compile Include="Axes\LinearAxes\LinearXAxisControl.cs" />
+    <Compile Include="Axes\LinearAxes\LinearXAxis.cs" />
+    <Compile Include="Axes\LinearAxes\LinearYAxis.cs" />
+    <Compile Include="Axes\LinearAxes\LinearYAxisControl.cs" />
+    <Compile Include="Axes\LinearAxes\MinorLinearTicksCreator.cs" />
+    <Compile Include="Common\DataList.cs" />
+    <Compile Include="Common\WilkinsonExtended.cs" />
+    <Compile Include="Axes\LogarithmicAxes\ILogarithmicAxisVisualModel.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicAxisVisual.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicAxisVisualGraph.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicGraphScale.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicTick.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicTickCalculator.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicTickCreator.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicTickLabelFormator.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicValue.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicXAxisControl.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicXAxis.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicYAxis.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicYAxisControl.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\ScopeLinearAxisVisual.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\ScopeLinearXAxis.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\ScopeLinearXAxisControl.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\StripLinearAxisVisual.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\StripLinearXAxisControl.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\StripLinearXAxis.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\ISweepLinearAxisVisualModel.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\SweepLinearAxisVisualGraph.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\SweepLinearAxisVisual.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\SweepLinearTickCreator.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\SweepLinearXAxis.cs" />
+    <Compile Include="Axes\LinearRealTimeXAxes\SweepLinearXAxisControl.cs" />
+    <Compile Include="Axes\TickFormattedText.cs" />
+    <Compile Include="Axes\AdaptiveRangeAxis.cs" />
+    <Compile Include="Axes\LinearAxes\LinearAxis.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicAxis.cs" />
+    <Compile Include="Common\Range.cs" />
+    <Compile Include="Common\MathHelper.cs" />
+    <Compile Include="Common\RoundHelper.cs" />
+    <Compile Include="Axes\TitleLabelFormator.cs" />
+    <Compile Include="AxesGrid\GridVisibility.cs" />
+    <Compile Include="Axes\Axis.cs" />
+    <Compile Include="Axes\IAxisDataType.cs" />
+    <Compile Include="Axes\LinearAxes\LinearScale.cs" />
+    <Compile Include="Axes\LogarithmicAxes\LogarithmicScale.cs" />
+    <Compile Include="Axes\Scale.cs" />
+    <Compile Include="AxesGrid\MultiAxesGrid.cs" />
+    <Compile Include="DataSeries\IDataPoints.cs" />
+    <Compile Include="PlotArea\PlotterAreaBorder.cs" />
+    <Compile Include="Chart.cs" />
+    <Compile Include="ChartAxisType.cs" />
+    <Compile Include="ChartCurveType.cs" />
+    <Compile Include="ChartVisualType.cs" />
+    <Compile Include="AxisZoneTypes.cs" />
+    <Compile Include="PlotHelper\ClipSetting.cs" />
+    <Compile Include="PlotHelper\IPlotConverter.cs" />
+    <Compile Include="PlotHelper\Plot.cs" />
+    <Compile Include="PlotHelper\PlotHelper.cs" />
+    <Compile Include="AxesRangeSelector\RangeSelector.cs" />
+    <Compile Include="AxesRangeSelector\RangeSelectorAdorner.cs" />
+    <Compile Include="Common\Converter.cs" />
+    <Compile Include="Common\DataHelper.cs" />
+    <Compile Include="DataSeries\DataPoint.cs" />
+    <Compile Include="DataSeries\DataSeries.cs" />
+    <Compile Include="DataSeries\DataSeriesCollection.cs" />
+    <Compile Include="DataSeries\IPointMarker.cs" />
+    <Compile Include="DataSeries\Orientation.cs" />
+    <Compile Include="Common\DebugTraceLog.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartHorizontalBar.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartVerticalBar.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartBezierCurve.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartHorizontalLine.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartPolylineCurve.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartScatteredPoints.cs" />
+    <Compile Include="DataSeries\SeriesControls\DataSeriesViewView.cs" />
+    <Compile Include="DataSeries\SeriesControls\ChartVerticalLine.cs" />
+    <Compile Include="DataSeries\ISeriesRender.cs" />
+    <Compile Include="Common\GenericDataTemplateSelector.cs" />
+    <Compile Include="PlotArea\PlotterArea.cs" />
+    <Compile Include="PlotArea\PlotterAreaBackground.cs" />
+    <Compile Include="PlotArea\PlotterAreaSizeChangedEventArgs.cs" />
+    <Compile Include="Axes\PlotFlowAxis.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSeries\SeriesVisuals\ChartBezierCurveVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartHorizontalBarVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartHorizontalLineVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartPolylineCurveVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartScatteredPointsVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartVerticalBarVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\DataSeriesVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartVerticalLineVisual.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\ChartVisualHelper.cs" />
+    <Compile Include="DataSeries\SeriesVisuals\DataPointVisual.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Yokogawa.Dtm.EddlViewControl.Charting.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

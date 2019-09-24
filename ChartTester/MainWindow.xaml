@@ -1,0 +1,59 @@
+﻿<Window x:Class="ChartTester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:charting="clr-namespace:Yokogawa.Dtm.EddlViewControl.Charting;assembly=Yokogawa.Dtm.EddlViewControl.Charting"
+        xmlns:local="clr-namespace:ChartTester"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <charting:Chart x:Name="charting"
+            Focusable="False"
+            XAxes="{Binding Path=XAxes, Mode=OneWay}"
+            YAxes="{Binding Path=DisplayYAxes, Mode=OneWay}"
+            DataSeries="{Binding Path=DataSeriesSources, Mode=OneWay}" 
+            Background="#DFE4E8"
+            PlotAreaBackground="#F1F2F4"
+            PlotAreaBorderThickness="0.5"
+            PlotAreaBorderBrush="#BEC8D2"
+            
+            FontFamily="Segoe UI"
+            FontSize="12"
+            YAxisZone="{Binding Path=ChartZone}"
+            SnapsToDevicePixels="True">
+            <!--<charting:Chart.ToolTip>
+                <ToolTip Style="{StaticResource MyTooltip}">
+                    <TextBlock MaxWidth="300"
+                                       FontFamily="Meiryo"
+                                       FontSize="16"
+                                       Text="{Binding Help, Mode=OneWay}"
+                                       TextWrapping="Wrap">
+                        <TextBlock.Background>
+                            <ImageBrush/>
+                        </TextBlock.Background>
+                    </TextBlock>
+                </ToolTip>
+            </charting:Chart.ToolTip>-->
+
+            <!-- Axis Grid Pen -->
+            <charting:MultiAxesGrid.VerticalPen>
+                <Pen Brush="#BEC8D2" Thickness="1" >
+                    <Pen.DashStyle>
+                        <DashStyle Dashes="1,1"/>
+                    </Pen.DashStyle>
+                </Pen>
+            </charting:MultiAxesGrid.VerticalPen>
+
+            <charting:MultiAxesGrid.HorizontalPen>
+                <Pen Brush="#BEC8D2" Thickness="1" ></Pen>
+            </charting:MultiAxesGrid.HorizontalPen>
+
+            <!-- Curve Selected Effect -->
+            <charting:Chart.CurveSelectedEffect>
+                <BlurEffect Radius="1" />
+            </charting:Chart.CurveSelectedEffect>
+
+        </charting:Chart>
+    </Grid>
+</Window>

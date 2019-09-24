@@ -35,7 +35,7 @@ namespace WpfControls
                 var stringVm = new StringViewModel();
                 stringVm.Label = "I am String";
                 stringVm.Value = "1234567890";
-           
+                
 
                 var comboBoxVm = new EnumViewModel();
                 comboBoxVm.Label = "I am a combobox";
@@ -57,13 +57,18 @@ namespace WpfControls
                 
                 var tree = new TreeViewModel();
                 tree.Label = "Root";
+
+                var root  = new TreeNode() { Id = "1", Label = "Root" };
+
                 tree.TreeNodes = new ObservableCollection<TreeNode>();
-                tree.TreeNodes.Add(new TreeNode() {Id="1", Label="Node1"});
+                tree.TreeNodes.Add(root);
 
                 var memberNode = new TreeNode() {Id = "2", Label = "Node2"};
                 memberNode.TreeNodes = new ObservableCollection<TreeNode>();
                 memberNode.TreeNodes.Add(new TreeNode() { Id = "1", Label = "Node3" });
-                tree.TreeNodes.Add(memberNode);
+
+                root.TreeNodes = new ObservableCollection<TreeNode>();
+                root.TreeNodes.Add(memberNode);
 
                 tabItemViewModel.UiModels.Add(datePickerVm);
                 tabItemViewModel.UiModels.Add(stringVm);
@@ -73,10 +78,14 @@ namespace WpfControls
                 tabItemViewModel.UiModels.Add(tree);
 
                 tabControlViewModel.TabItemViewModels.Add(tabItemViewModel);
+                tabControlViewModel.TabItemViewModels.Add(new TabItemViewModel() {Label = "Item 2"});
                 tabControlView.DataContext = tabControlViewModel;
 
                 mainGrid.Children.Add(tabControlView);
-              
+
+                var test = tabControlViewModel.SelectedTabItemViewModel;
+
+
             }
             catch (Exception ex)
             {

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Access_Modifier
 {
-    internal class InternalClass
+    public class InternalClass
     {
         public string Name { get; set; }
+
+        public double Value { get; set; }
     }
 }

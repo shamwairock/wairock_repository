@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HeaderInfo xmlns="http://schemas.datacontract.org/2004/07/Yokogawa.IA.Dtm.Interface" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <!--<CompanyImage>
+    <Value />
+  </CompanyImage>
+  <DeviceImage>
+    <Value />
+  </DeviceImage>
+  <ProtocolImage>
+    <Value />
+  </ProtocolImage>-->
+  <Rows>
+    <Row>
+      <Cols>
+        <Col>
+          <ParameterItem>
+            <Label>Label1</Label>
+            <NodePath>NodePath1</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label2</Label>
+            <NodePath>NodePath2</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label3</Label>
+            <NodePath>NodePath3</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+      </Cols>
+    </Row>
+    <Row>
+      <Cols>
+        <Col>
+          <ParameterItem>
+            <Label>Label4</Label>
+            <NodePath>NodePath4</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label5</Label>
+            <NodePath>NodePath5</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label6</Label>
+            <NodePath>NodePath6</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+      </Cols>
+    </Row>
+    <Row>
+      <Cols>
+        <Col>
+          <ParameterItem>
+            <Label>Label7</Label>
+            <NodePath>NodePath7</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label8</Label>
+            <NodePath>NodePath8</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+        <Col>
+          <ParameterItem>
+            <Label>Label9</Label>
+            <NodePath>NodePath9</NodePath>
+            <Value />
+          </ParameterItem>
+        </Col>
+      </Cols>
+    </Row>
+  </Rows>
+</HeaderInfo>

@@ -18,7 +18,7 @@
             <RowDefinition Height="5"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.Column="1">
-            <TreeView ItemsSource="{Binding TreeNodes}" >
+            <TreeView ItemsSource="{Binding TreeNodes}" BorderThickness="0" >
                 <TreeView.Resources>
                     <HierarchicalDataTemplate ItemsSource="{Binding TreeNodes}" DataType="{x:Type local:TreeNode}">
                         <TreeViewItem Header="{Binding Label}"/>

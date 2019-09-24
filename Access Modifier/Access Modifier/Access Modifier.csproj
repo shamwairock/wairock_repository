@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildClass.cs" />
     <Compile Include="InternalClass.cs" />
     <Compile Include="InternalClass2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtectedBaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
