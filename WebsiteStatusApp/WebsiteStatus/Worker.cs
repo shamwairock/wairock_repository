@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+namespace WebsiteStatus
+{
+    public class Worker : BackgroundService
+    {
+        private readonly ILogger<Worker> _logger;
+        private HttpClient client;
+
+        public Worker(ILogger<Worker> logger)
+        {
+            _logger = logger;
+        }
+
+        public override Task StartAsync(CancellationToken cancellationToken)
+        {
+            client = new HttpClient();
+
+            return base.StartAsync(cancellationToken);
+        }
+
+        public override Task StopAsync(CancellationToken cancellationToken)
+        {
+            client?.Dispose();
+
+            return base.StopAsync(cancellationToken);
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                try
+                {
+                    var result = await client.GetAsync("http://localhost:33930/");
+
+                    if (result == null)
+                    {
+                        _logger.LogError("Failed to get client response.");
+                    }
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        _logger.LogInformation("The website is up. Status {0}", result.StatusCode);
+                    }
+                    else
+                    {
+                        _logger.LogError("The website is down. Status {0}", result.StatusCode);
+                    }
+
+                    await Task.Delay(5000, stoppingToken);
+                }
+                catch(Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                }
+            }
+        }
+    }
+}

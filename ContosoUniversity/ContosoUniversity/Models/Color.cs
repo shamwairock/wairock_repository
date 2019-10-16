@@ -5,9 +5,14 @@ using System.Web;
 
 namespace ContosoBookstore.Models
 {
-    public abstract class Payment
+    public enum Color
     {
-        public Guid PaymentId { get; set; }
-        public TenderType TenderType { get; set; }
+        Yellow,
+        Blue,
+        Red,
+        Green,
+        Black,
+        Grey,
+        Indigo
     }
 }

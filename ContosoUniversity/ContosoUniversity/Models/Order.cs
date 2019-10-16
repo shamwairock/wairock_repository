@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,8 @@ namespace ContosoBookstore.Models
 {
     public class Order
     {
-        public Guid OrderId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid OrderID { get; set; }
 
         public DateTime OrderDate { get; set; }
 
@@ -19,7 +21,7 @@ namespace ContosoBookstore.Models
 
         public decimal Tax { get; set; }
 
-        public Guid CustomerId { get; set; }
+        public Guid CustomerID { get; set; }
 
         public virtual Customer Customer { get; set; }
 
